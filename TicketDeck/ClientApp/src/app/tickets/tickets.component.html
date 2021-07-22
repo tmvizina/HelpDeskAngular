@@ -14,8 +14,8 @@
       <form #addTicketForm="ngForm" (ngSubmit)="addTicket(addTicketForm)">
         <input ngModel type="text" id="ticket" name="title" placeholder="Title" />
         <br />
-        <br/>
-        <input ngModel type="text" id="ticket" name="descrtiption" placeholder="Descrtiption" />
+        <br />
+        <input ngModel type="text" id="ticket" name="description" placeholder="Description" />
         <br />
         <br />
         <label class="switch">
@@ -27,18 +27,24 @@
         <input ngModel type="text" id="ticket" name="solution" placeholder="Solution" />
         <br />
         <br />
+
+        <div class="custom-select" style="width:200px;">
+          <select ngModel name="priority">
+            <option value="0">Select priority:</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <input type="submit" />
       </form>
+
+
     </div>
-    <div class="custom-select" style="width:200px;">
-      <select ngModel name="Priority">
-        <option value="0">Select priority:</option>
-        <option value="1">High</option>
-        <option value="2">Medium</option>
-        <option value="3">Low</option>
-      </select>
-    </div>
+
+
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add Ticket</button>
+      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add Ticket</button>
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
 
     </div>
