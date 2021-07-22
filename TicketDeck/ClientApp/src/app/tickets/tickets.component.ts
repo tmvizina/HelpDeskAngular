@@ -12,12 +12,13 @@ import { HttpClient } from '@angular/common/http';
 export class TicketsComponent {
   //array of Tickets
   public tickets: Tickets[] = [];
-    
 
-  constructor(private HelpDeskService: HelpDeskService) {
-      
-    this.tickets = [];
+
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    http.get<Tickets[]>(baseUrl + 'api/tickets').subscribe(result => {
+      this.tickets = result;
+      console.log(this.tickets);
+    }, error => console.error(error));
   }
 
-    
-  }
+}
