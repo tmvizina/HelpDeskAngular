@@ -1,6 +1,15 @@
-<div style="border: 1px solid red">User Component</div>
-
-<h1>Users</h1>
-<div *ngFor="let u of users">
-  <p>Id:{{u.userId}} Name:{{u.name}}</p>
+<!--This is the main container of the page-->
+<div class="container" style="border: 1px solid black">
+  <!--heading for page-->
+  <h2>Please select a user:</h2>
+  <div class="row">
+    <div class="col-6 col-sm-6 center" *ngFor="let u of users">
+      <p style="border: 1px solid red">{{u.userId}}: {{u.name}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <p style="border: 1px solid red">Second row?</p>
+    </div>
+  </div>
 </div>
