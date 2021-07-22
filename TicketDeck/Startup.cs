@@ -12,8 +12,7 @@ namespace TicketDeck
 {
     public class Startup
     {
-        string connection = "Server=.\\MSSQLSERVER01;Database=HelpDesk;Trusted_Connection=True;ConnectRetryCount=0;";
-
+        string connection = "Server=.\\SQLExpress;Database=HelpDesk;Trusted_Connection=True;ConnectRetryCount=0;";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,9 +22,7 @@ namespace TicketDeck
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<HelpDeskContext>(options => options.UseSqlServer(connection));
-
+        { 
             services.AddControllersWithViews();
             services.AddDbContext<HelpDeskContext>(options => options.UseSqlServer(connection));
 
