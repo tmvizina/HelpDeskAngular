@@ -1,0 +1,28 @@
+<div style="border: 1px solid red">Ticket Component</div>
+
+<h1>Tickets</h1>
+
+<button (click)="createTicket()">
+  Create New Ticket
+</button>
+
+<a class="btn" routerLink="/bookmarks">Bookmarks</a>
+
+<div>
+
+  <form>
+    <label>Search A Ticket</label>
+    <input type="text" name="ticket" />
+    <br />
+    <input type="submit" value="Search Ticket" />
+  </form>
+</div>
+
+
+
+<div *ngFor="let t of tickets">
+  <p> Id:{{t.TicketId}} Title:{{t.Title}}</p>
+</div>
+
+
+
