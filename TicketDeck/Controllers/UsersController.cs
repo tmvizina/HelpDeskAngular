@@ -80,7 +80,7 @@ namespace TicketDeck.Controllers
 
             User user = new User();
             user.Name = name;
-            _context.Users.Add(user);
+            _context.User.Add(user);
 
             await _context.SaveChangesAsync();
 
