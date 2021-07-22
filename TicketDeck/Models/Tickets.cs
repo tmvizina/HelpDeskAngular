@@ -8,6 +8,7 @@ namespace TicketDeck.Models
 {
     public partial class Tickets
     {
+        //primary key
         [Key]
         public int TicketId { get; set; }
         public string Title { get; set; }

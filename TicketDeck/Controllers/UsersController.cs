@@ -79,6 +79,8 @@ namespace TicketDeck.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            //User user = new User();
+            //user.Name = name;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

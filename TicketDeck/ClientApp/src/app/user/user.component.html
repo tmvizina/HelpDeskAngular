@@ -13,3 +13,16 @@
     </div>
   </div>
 </div>
+
+
+  <button (click)="addUser()">Click me</button>
+  <!-- Add a new user form-->
+  <div class="row">
+    <div class="col">
+      <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm)">
+        <input type="text" name="name" ngModel />
+        <input type="submit" value="Add User" />
+      </form>
+    </div>
+  </div>
+
