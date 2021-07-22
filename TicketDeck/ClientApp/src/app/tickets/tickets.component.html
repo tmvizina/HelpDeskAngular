@@ -2,14 +2,17 @@
 
 <h1>Tickets</h1>
 
-<button (click)="createTicket()">
+
+
+
+<button (click)="createTicket()" type="button">
   Create New Ticket
 </button>
 
 <a class="btn" routerLink="/bookmarks">Bookmarks</a>
 
+<a class="btn1" routerLink="/user">Users</a>
 <div>
-
   <form>
     <label>Search A Ticket</label>
     <input type="text" name="ticket" />
@@ -18,10 +21,8 @@
   </form>
 </div>
 
-
-
 <div *ngFor="let t of tickets">
-  <p> Id:{{t.TicketId}} Title:{{t.Title}}</p>
+  <p> Id:{{t.ticketId}} Title:{{t.title}}</p>
 </div>
 
 

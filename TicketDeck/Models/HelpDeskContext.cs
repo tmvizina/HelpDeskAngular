@@ -14,8 +14,7 @@ namespace TicketDeck.Models
         {
         }
 
-        public HelpDeskContext(DbContextOptions<HelpDeskContext> options)
-            : base(options)
+        public HelpDeskContext(DbContextOptions<HelpDeskContext> options) : base(options)
         {
         }
 

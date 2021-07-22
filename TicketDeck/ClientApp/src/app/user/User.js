@@ -7,4 +7,4 @@ var User = /** @class */ (function () {
     return User;
 }());
 exports.User = User;
-//# sourceMappingURL=User.js.map
+//# sourceMappingURL=user.js.map
