@@ -17,33 +17,44 @@ export class UserComponent {
   public postUser: HttpClient = null;
   //this will be the base url 
   public apiBase: string = "";
+  public http: HttpClient = null;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-
     this.apiBase = baseUrl;
-    this.postUser = http;
+    this.http = http;
 
     http.get<User[]>(this.apiBase + 'api/users').subscribe(result => {
       this.users = result;
       console.log(this.users);
     }, error => console.error(error));
 
-    ////add a new user from form
-    //addUser(form: NgForm){
-    //  let name = form.form.value.name;
-    //  this.name.push(name)
-
-    //}
   }
 
-  //put will create a new user
+  //will call API and update the display
+  displayUser(http: HttpClient) {
+    http.get<User[]>(this.apiBase + 'api/users').subscribe(result => {
+      this.users = result;
+      console.log(this.users);
+    }, error => console.error(error));
+  }
+
+  //put will create a new user and add it to the database
   addUser(form: NgForm) {
-    let newUser: User = { name: form.form.value.name, userID: null };
-    //let name: string = form.form.value.name;
-    this.postUser.post<User>(this.apiBase + 'api/users', newUser).subscribe(result => {
+    let name: string = form.form.value.name;
+    this.http.post<User>(this.apiBase + 'api/users?name=' + name, {}).subscribe(result => {
       console.log(result)
+      let u: User = { name: name, userID: this.users.length };
+      this.users.push(u);
+
     });
   }
+
+  //will recall page and display updated user list
+  buttonSubmit(form: NgForm) {
+    this.addUser(form);
+    this.displayUser(this.http);
+  }
+
 
   //constructor(private user: HelpDeskService, @Inject('BASE_URL') baseUrl: string) {
   //  this.user.getUser();

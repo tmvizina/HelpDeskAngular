@@ -4,7 +4,7 @@
   <h2>Please select a user:</h2>
   <div class="row">
     <div class="col-6 col-sm-6 center" *ngFor="let u of users">
-      <p style="border: 1px solid red">{{u.userId}}: {{u.name}}</p>
+      <p style="border: 1px solid red">{{u.name}}</p>
     </div>
   </div>
   <div class="row">
@@ -15,11 +15,11 @@
 </div>
 
 
-  <button (click)="addUser()">Click me</button>
+  <!--<button (click)="a">Click me</button>-->
   <!-- Add a new user form-->
   <div class="row">
     <div class="col">
-      <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm)">
+      <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
         <input type="text" name="name" ngModel />
         <input type="submit" value="Add User" />
       </form>
