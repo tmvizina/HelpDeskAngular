@@ -13,7 +13,7 @@ namespace TicketDeck.Models
         public int? PersonId { get; set; }
         public int? TicketId { get; set; }
 
-        public virtual Users Person { get; set; }
+        public virtual User Person { get; set; }
         public virtual Tickets Ticket { get; set; }
     }
 }

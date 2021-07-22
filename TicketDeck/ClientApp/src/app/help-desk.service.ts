@@ -22,13 +22,13 @@ export class HelpDeskService {
 
 
   getUser(): any {
-    this.controller = 'Users'
+    this.controller = 'User'
     return this.http.get<User>(this.baseURL);
   }
 
 
   ////  //getUser(): any {
-  ////  //  this.controller = 'Users'
+  ////  //  this.controller = 'User'
   ////  //  return this.http.get<User>(this.baseURL);
   ////  //}
 

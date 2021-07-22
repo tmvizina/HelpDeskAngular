@@ -21,7 +21,7 @@ namespace TicketDeck.Models
 
         public virtual DbSet<Bookmarks> Bookmarks { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -78,7 +78,7 @@ namespace TicketDeck.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
 
