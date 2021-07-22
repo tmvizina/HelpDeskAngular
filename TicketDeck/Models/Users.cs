@@ -7,13 +7,16 @@ using System.Collections.Generic;
 
 namespace TicketDeck.Models
 {
-    public partial class Bookmarks
+    public partial class Users
     {
-        public int BookmarkId { get; set; }
-        public int? PersonId { get; set; }
-        public int? TicketId { get; set; }
+        public Users()
+        {
+            Bookmarks = new HashSet<Bookmarks>();
+        }
 
-        public virtual Users Person { get; set; }
-        public virtual Tickets Ticket { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+
+        public virtual ICollection<Bookmarks> Bookmarks { get; set; }
     }
 }
