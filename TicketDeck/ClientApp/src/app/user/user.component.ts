@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HelpDeskService } from '../help-desk.service';
 import { User } from './User';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-user',
@@ -18,6 +19,7 @@ export class UserComponent {
   //this will be the base url 
   public apiBase: string = "";
   public http: HttpClient = null;
+  public route: Router;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.apiBase = baseUrl;
@@ -53,6 +55,12 @@ export class UserComponent {
   buttonSubmit(form: NgForm) {
     this.addUser(form);
     this.displayUser(this.http);
+  }
+
+  //this is select the user and route to a ticket page
+  //it is a router object and navigate by URL
+  selectUser(form: NgForm) {
+    this.route.navigateByUrl('/tickets');
   }
 
 
