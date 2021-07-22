@@ -11,7 +11,7 @@
 ////  controller: string = '';
 ////  baseURL: string = `https://localhost:44314/api/${this.controller}`
 ////  //getUser(): any {
-////  //  this.controller = 'Users'
+////  //  this.controller = 'User'
 ////  //  return this.http.get<User>(this.baseURL);
 ////  //}
 ////  getTickets(): any {

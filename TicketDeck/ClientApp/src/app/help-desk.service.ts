@@ -22,7 +22,7 @@ export class HelpDeskService {
 
   //---API calls---
   getUser(): any {
-    this.controller = 'Users'
+    this.controller = 'User'
     return this.http.get<User>(this.baseURL);
   }
 

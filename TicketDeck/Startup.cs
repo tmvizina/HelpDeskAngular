@@ -13,6 +13,7 @@ namespace TicketDeck
     public class Startup
     {
         string connection = "Server=.\\SQLExpress;Database=HelpDesk;Trusted_Connection=True;ConnectRetryCount=0;";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
