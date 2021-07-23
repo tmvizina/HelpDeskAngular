@@ -52,8 +52,7 @@
   </div>
 
 <div *ngFor="let t of tickets">
-  <p> TicketID:{{t.ticketId}} Title:{{t.title}}</p>
+  <a [routerLink]="['/ticket',t.ticketId]"> TicketID:{{t.ticketId}} Title:{{t.title}}</a>
 </div>
-
 
 
