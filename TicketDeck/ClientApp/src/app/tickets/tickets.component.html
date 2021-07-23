@@ -36,7 +36,17 @@
             <option value="low">Low</option>
           </select>
         </div>
-        <input type="submit" />
+
+
+
+
+        <div class="modal-footer">
+          <!--<input class="btn btn-outline-dark" type="submit" value="Add Ticket" />
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('close click')">Cancel</button>-->
+        </div>
+
+
+        <input class="btn btn-outline-dark" type="submit" />
       </form>
 
 
@@ -44,7 +54,7 @@
 
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add Ticket</button>
+      
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
 
     </div>
@@ -52,7 +62,9 @@
   </div>
 
 <div *ngFor="let t of tickets">
-  <a [routerLink]="['/ticket',t.ticketId]"> TicketID:{{t.ticketId}} Title:{{t.title}}</a>
+  <a [routerLink]="['/ticket',t.ticketId]"> TicketID:{{t.ticketId}} Title:{{t.title}}</a>        <button type="button" class="close" aria-label="Close" (click)="removeTicket(t.ticketId)">
+    <span aria-hidden="true">×</span>
+  </button>
 </div>
 
 

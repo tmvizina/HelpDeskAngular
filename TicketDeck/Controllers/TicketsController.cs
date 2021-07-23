@@ -94,10 +94,14 @@ namespace TicketDeck.Controllers
             {
                 return NotFound();
             }
-
+            //Removing dependencies from bookmarks
+            List<Bookmarks> matching = _context.Bookmarks.Where(x => x.TicketId == ticket.TicketId).ToList();
+            foreach (Bookmarks x in matching)
+            {
+                _context.Bookmarks.Remove(x);
+            }
             _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
-
             return ticket;
         }
 

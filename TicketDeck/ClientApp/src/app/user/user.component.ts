@@ -52,10 +52,6 @@ export class UserComponent {
     });
   }
 
-  deleteUser(form: NgForm) {
-
-
-  }
 
 
   //will recall page and display updated user list
@@ -73,7 +69,18 @@ export class UserComponent {
     }
   }
 
-
+  //DELETE user -- this function will delete a user from the DB
+  deleteUser(form: NgForm) {
+    let id = form.form.value.deleteUser;
+    this.http.delete<User>(this.apiBase + 'api/users/' + id, {}).subscribe(results => {
+      console.log(results)
+    });
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].userID === id) {
+        this.users.splice(id, 1);
+      }
+    }
+  }
   //constructor(private user: HelpDeskService, @Inject('BASE_URL') baseUrl: string) {
   //  this.user.getUser();
   //  console.log(this.user.getUser());

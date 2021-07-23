@@ -18,10 +18,8 @@ export class LoginService {
 
   login(login: User) {
    
-    localStorage.setItem('login', JSON.stringify(login.userID));
+    localStorage.setItem('login', JSON.stringify(login));
 
-    
-    console.log(JSON.stringify(login.userID));
   }
 
   getLogin():number {

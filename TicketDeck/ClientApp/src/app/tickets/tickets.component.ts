@@ -50,7 +50,16 @@ export class TicketsComponent {
     this.http.post<Tickets>(this.apiBase + 'api/Tickets', ticket).subscribe(result => {
       console.log(result)
 
-     /* this.tickets.push(result)*/;
+      this.tickets.push(result);
+    });
+  }
+  removeTicket(index: number) {
+    let id: number = index;
+    console.log(index);
+    console.log(id);
+    this.http.delete<Tickets>(this.apiBase + 'api/tickets/' + id).subscribe(result => {
+      console.log(result)
+      this.tickets.splice(id, 1)
     });
   }
 
