@@ -1,7 +1,5 @@
 <div>
   <h1>Ticket Manager</h1>
-  <!--<a class="btn" routerLink="/bookmarks">Bookmarks</a>
-  <a class="btn1" routerLink="/user">Users</a>-->
   <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Add A Ticket</button>
   <ng-template #mymodal let-modal>
     <div class="modal-header">
@@ -15,7 +13,9 @@
         <input ngModel type="text" id="ticket" name="title" placeholder="Title" />
         <br />
         <br />
+
         <input ngModel type="text" id="ticket" name="description" placeholder="Description" />
+
         <br />
         <br />
         <label class="switch">
@@ -37,6 +37,7 @@
           </select>
         </div>
         <input type="submit" />
+
       </form>
 
 
@@ -52,6 +53,7 @@
   </div>
 
 <div *ngFor="let t of tickets">
+
   <a [routerLink]="['/ticket',t.ticketId]"> TicketID:{{t.ticketId}} Title:{{t.title}}</a>
 </div>
 
