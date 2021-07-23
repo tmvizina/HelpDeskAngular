@@ -46,8 +46,9 @@
   </div>
 
 <div *ngFor="let t of tickets">
-  <p> TicketID:{{t.ticketId}} Title:{{t.title}}</p>
+  <ul style="list-style-type:none;">
+    <li>
+      <button>View</button> <br/><button >Mark Resolved</button> TicketID:{{t.ticketId}} Title:{{t.title}}
+    </li>
+  </ul>
 </div>
-
-
-

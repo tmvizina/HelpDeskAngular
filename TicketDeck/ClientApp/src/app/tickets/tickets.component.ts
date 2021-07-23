@@ -22,7 +22,7 @@ export class TicketsComponent {
   public postTickets: HttpClient = null;
   title = 'appBootstrap';
   closeResult: string;
-
+  resolved = false;
 
   constructor(private modalService: NgbModal, http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.apiBase = baseUrl;
@@ -52,10 +52,10 @@ export class TicketsComponent {
     let description = form.form.value.descrption;
     let resolved = form.form.value.resolved;
     let solution = form.form.value.solution;
-    let Priotity = form.form.value.priority;
+    let priority = form.form.value.priority;
     this.http.post<Tickets>(this.apiBase + 'api/tickets?title=' + title, {}).subscribe(result => {
       console.log(result)
-      let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priotity: Priotity };
+      let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priority: priority };
       this.tickets.push(ticket);
     });
   }
@@ -66,6 +66,13 @@ export class TicketsComponent {
     this.addTicket(form);
     this.displayTicket(this.http);
   }
+
+
+  //resolveTicket(Ticket: boolean): void {
+  //  console.log(Ticket);
+  //  this.tickets.Resolved  = true;
+  //}
+
 
   open(content) {
 
