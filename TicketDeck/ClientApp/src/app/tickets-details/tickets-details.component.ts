@@ -32,4 +32,14 @@ export class TicketsDetailsComponent {
     
   }
 
+  addSolution(form: NgForm, ticket: Tickets): Tickets {
+    
+    ticket.solution = form.form.value.solution;
+    ticket.resolved = true;
+    console.log(ticket)
+    return ticket;
+
+  }
+
+
 }
