@@ -39,13 +39,27 @@ export class TicketsComponent {
 
     let description = form.form.value.description;
     let resolved = form.form.value.resolved;
+
+    if(resolved === ""){
+      resolved = false;
+    }
+
     let solution = form.form.value.solution;
     let priority = form.form.value.priority;
-    let ticket: Tickets = { TicketId: 0, Title: title, Description: description, Resolved: resolved, Solution: solution, priority: priority }
+    let ticket: Tickets = { TicketId: 0, Title: title, Description: description, resolved: resolved, solution: solution, priority: priority }
     this.http.post<Tickets>(this.apiBase + 'api/Tickets', ticket).subscribe(result => {
       console.log(result)
 
       this.tickets.push(result);
+    });
+  }
+  removeTicket(index: number) {
+    let id: number = index;
+    console.log(index);
+    console.log(id);
+    this.http.delete<Tickets>(this.apiBase + 'api/tickets/' + id).subscribe(result => {
+      console.log(result)
+      this.tickets.splice(id, 1)
     });
   }
 

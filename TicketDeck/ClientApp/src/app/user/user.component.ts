@@ -52,6 +52,8 @@ export class UserComponent {
     });
   }
 
+
+
   //will recall page and display updated user list
   buttonSubmit(form: NgForm) {
     this.addUser(form);
@@ -75,14 +77,12 @@ export class UserComponent {
     });
 
     for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].userId == id) {
+      if (this.users[i].userID === id) {
+
         this.users.splice(id, 1);
       }
     }
   }
-
-
-
 
   //constructor(private user: HelpDeskService, @Inject('BASE_URL') baseUrl: string) {
   //  this.user.getUser();

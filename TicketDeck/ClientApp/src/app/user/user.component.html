@@ -12,6 +12,7 @@
         </select>
         <input type="submit" value="Login" />
       </form>
+
     </div>
   </div>
   <br />
@@ -20,14 +21,14 @@
   <div class="container center border">
     <div class="row">
       <div class="col">
-        <h5>Add a new user:</h5>
+        <h6>Add a new user:</h6>
         <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
           <input type="text" name="name" ngModel />
           <input type="submit" value="Add User" />
         </form>
         <!-- this form will DELETE a user-->
         <div class="col">
-          <h5>Delete a user:</h5>
+          <h6>Delete a user:</h6>
           <form #deleteUserForm="ngForm" (ngSubmit)="deleteUser(deleteUserForm)">
             <select name="deleteUser" ngModel>
               <option *ngFor="let u of users" value="{{u.userId}}">{{u.name}}</option>
@@ -39,8 +40,4 @@
     </div>
   </div>
 </div>
-
-
-
-
 

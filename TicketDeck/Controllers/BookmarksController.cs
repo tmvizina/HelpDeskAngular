@@ -11,48 +11,48 @@ namespace TicketDeck.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TicketsController : ControllerBase
+    public class BookmarksController : ControllerBase
     {
         private readonly HelpDeskContext _context;
 
-        public TicketsController(HelpDeskContext context)
+        public BookmarksController(HelpDeskContext context)
         {
             _context = context;
         }
 
-        // GET: api/Tickets
+        // GET: api/Bookmarks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tickets>>> GetTickets()
+        public async Task<ActionResult<IEnumerable<Bookmarks>>> GetBookmarks()
         {
-            return await _context.Tickets.ToListAsync();
+            return await _context.Bookmarks.ToListAsync();
         }
 
-        // GET: api/Tickets/5
+        // GET: api/Bookmarks/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Tickets>> GetTicket(int id)
+        public async Task<ActionResult<Bookmarks>> GetBookmarks(int id)
         {
-            var ticket = await _context.Tickets.FindAsync(id);
+            var bookmarks = await _context.Bookmarks.FindAsync(id);
 
-            if (ticket == null)
+            if (bookmarks == null)
             {
                 return NotFound();
             }
 
-            return ticket;
+            return bookmarks;
         }
 
-        // PUT: api/Tickets/5
+        // PUT: api/Bookmarks/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTicket(int id, Tickets ticket)
+        public async Task<IActionResult> PutBookmarks(int id, Bookmarks bookmarks)
         {
-            if (id != ticket.TicketId)
+            if (id != bookmarks.BookmarkId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(ticket).State = EntityState.Modified;
+            _context.Entry(bookmarks).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace TicketDeck.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TicketExists(id))
+                if (!BookmarksExists(id))
                 {
                     return NotFound();
                 }
@@ -73,41 +73,37 @@ namespace TicketDeck.Controllers
             return NoContent();
         }
 
-        // POST: api/Tickets
+        // POST: api/Bookmarks
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Tickets>> PostTicket(Tickets ticket)
+        public async Task<ActionResult<Bookmarks>> PostBookmarks(Bookmarks bookmarks)
         {
-            _context.Tickets.Add(ticket);
+            _context.Bookmarks.Add(bookmarks);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTicket", new { id = ticket.TicketId }, ticket);
+            return CreatedAtAction("GetBookmarks", new { id = bookmarks.BookmarkId }, bookmarks);
         }
 
-        // DELETE: api/Tickets/5
+        // DELETE: api/Bookmarks/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Tickets>> DeleteTicket(int id)
+        public async Task<ActionResult<Bookmarks>> DeleteBookmarks(int id)
         {
-            var ticket = await _context.Tickets.FindAsync(id);
-            if (ticket == null)
+            var bookmarks = await _context.Bookmarks.FindAsync(id);
+            if (bookmarks == null)
             {
                 return NotFound();
             }
-            //Removing dependencies from bookmarks
-            List<Bookmarks> matching = _context.Bookmarks.Where(x => x.TicketId == ticket.TicketId).ToList();
-            foreach (Bookmarks x in matching)
-            {
-                _context.Bookmarks.Remove(x);
-            }
-            _context.Tickets.Remove(ticket);
+
+            _context.Bookmarks.Remove(bookmarks);
             await _context.SaveChangesAsync();
-            return ticket;
+
+            return bookmarks;
         }
 
-        private bool TicketExists(int id)
+        private bool BookmarksExists(int id)
         {
-            return _context.Tickets.Any(e => e.TicketId == id);
+            return _context.Bookmarks.Any(e => e.BookmarkId == id);
         }
     }
 }

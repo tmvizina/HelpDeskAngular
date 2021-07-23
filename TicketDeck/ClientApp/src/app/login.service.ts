@@ -17,12 +17,12 @@ export class LoginService {
   }
 
   login(login: User) {
-
+   
     localStorage.setItem('login', JSON.stringify(login));
 
   }
 
-  getLogin():User {
+  getLogin():number {
 
     return JSON.parse(localStorage.getItem('login'));
   }
@@ -30,5 +30,6 @@ export class LoginService {
   logout() {
     localStorage.removeItem('login');
   }
+
 
 }

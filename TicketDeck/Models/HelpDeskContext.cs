@@ -37,7 +37,8 @@ namespace TicketDeck.Models
             modelBuilder.Entity<Bookmarks>(entity =>
             {
                 entity.HasKey(e => e.BookmarkId)
-                    .HasName("PK__Bookmark__541A3A91622B8961");
+
+                    .HasName("PK__Bookmark__541A3A91FCDB9F8E");
 
                 entity.Property(e => e.BookmarkId).HasColumnName("BookmarkID");
 
@@ -48,12 +49,16 @@ namespace TicketDeck.Models
                 entity.HasOne(d => d.Person)
                     .WithMany(p => p.Bookmarks)
                     .HasForeignKey(d => d.PersonId)
-                    .HasConstraintName("FK__Bookmarks__Perso__5CD6CB2B");
+
+                    .HasConstraintName("FK__Bookmarks__Perso__49C3F6B7");
+
 
                 entity.HasOne(d => d.Ticket)
                     .WithMany(p => p.Bookmarks)
                     .HasForeignKey(d => d.TicketId)
-                    .HasConstraintName("FK__Bookmarks__Ticke__5DCAEF64");
+
+                    .HasConstraintName("FK__Bookmarks__Ticke__4AB81AF0");
+
             });
 
             modelBuilder.Entity<Tickets>(entity =>

@@ -44,7 +44,7 @@ import { LoginService } from './login.service';
 
       /*The '' path is how we can change the starting location of our program
        Step 3 of 3 of connecting a new component is directly doing the path*/
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: UserComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'tickets', component: TicketsComponent },
