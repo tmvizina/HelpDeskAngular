@@ -54,9 +54,16 @@ export class TicketsComponent {
     let solution = form.form.value.solution;
     let priority = form.form.value.priority;
     this.http.post<Tickets>(this.apiBase + 'api/tickets?title=' + title, {}).subscribe(result => {
+<<<<<<< HEAD
       console.log(result)
       let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priority: priority };
       this.tickets.push(ticket);
+=======
+
+     console.log(result)
+     let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priotity: Priotity };
+     this.tickets.push(ticket);
+>>>>>>> 1da25f55bf97003fa348ff3fd969a3e1b2ab8d4f
     });
   }
 
