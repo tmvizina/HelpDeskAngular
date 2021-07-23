@@ -7,4 +7,4 @@ var Bookmarks = /** @class */ (function () {
     return Bookmarks;
 }());
 exports.Bookmarks = Bookmarks;
-//# sourceMappingURL=bookmarks.js.map
+//# sourceMappingURL=Bookmarks.js.map

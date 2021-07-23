@@ -52,6 +52,12 @@ export class UserComponent {
     });
   }
 
+  deleteUser(form: NgForm) {
+
+
+  }
+
+
   //will recall page and display updated user list
   buttonSubmit(form: NgForm) {
     this.addUser(form);
