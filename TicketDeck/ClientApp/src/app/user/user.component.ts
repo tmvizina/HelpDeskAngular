@@ -6,14 +6,14 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-user',
-    templateUrl: './user.component.html',
+  selector: 'app-user',
+  templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
   providers: [HttpClient]
 })
 /** User component **/
 export class UserComponent {
-    //array of users
+  //array of users
   public users: User[] = [];
   public postUser: HttpClient = null;
   //this will be the base url 
@@ -73,6 +73,6 @@ export class UserComponent {
   //  this.user.getUser()
   //    .subscribe((user: any))=> {
   //    this.user=
-    
+
   //}
 }

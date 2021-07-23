@@ -3,11 +3,13 @@
   <!--heading for page-->
   <h2>Please select a user:</h2>
   <div class="row">
+
       <form #selectUserForm="ngForm" (ngSubmit)="selectUser(selectUserForm)">
         <select  name="selectedUser" ngModel>
             <option *ngFor="let u of users" value="{{u.name}}">{{u.name}}</option>
         </select>
       <input type="submit" value="view"/>
+
     </form>
   </div>
   <div class="row">
@@ -18,14 +20,13 @@
 </div>
 
 
-  <!--<button (click)="a">Click me</button>-->
-  <!-- Add a new user form-->
-  <div class="row">
-    <div class="col">
-      <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
-        <input type="text" name="name" ngModel />
-        <input type="submit" value="Add User" />
-      </form>
-    </div>
+<!--<button (click)="a">Click me</button>-->
+<!-- Add a new user form-->
+<div class="row">
+  <div class="col">
+    <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
+      <input type="text" name="name" ngModel />
+      <input type="submit" value="Add User" />
+    </form>
   </div>
-
+</div>
