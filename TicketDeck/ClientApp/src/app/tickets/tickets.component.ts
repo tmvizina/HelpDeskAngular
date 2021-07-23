@@ -54,9 +54,10 @@ export class TicketsComponent {
     let solution = form.form.value.solution;
     let Priotity = form.form.value.priority;
     this.http.post<Tickets>(this.apiBase + 'api/tickets?title=' + title, {}).subscribe(result => {
-    console.log(result)
-    let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priotity: Priotity };
-    this.tickets.push(ticket);
+
+     console.log(result)
+     let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priotity: Priotity };
+     this.tickets.push(ticket);
     });
   }
 
@@ -69,7 +70,7 @@ export class TicketsComponent {
 
   open(content) {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
 
       this.closeResult = `Closed with: ${result}`;
 
@@ -92,8 +93,7 @@ export class TicketsComponent {
       return 'by clicking on a backdrop';
 
     }
-        else
-    {
+    else {
 
 
       return `with: ${reason}`;
