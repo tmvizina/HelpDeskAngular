@@ -4,5 +4,7 @@ export class Tickets {
   Description: string;
   Resolved: boolean;
   Solution: string;
-  Priority: string; 
+
+  priority: string; 
+
 }

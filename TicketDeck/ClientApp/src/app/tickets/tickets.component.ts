@@ -22,7 +22,10 @@ export class TicketsComponent {
   public postTickets: HttpClient = null;
   title = 'appBootstrap';
   closeResult: string;
-  resolved = false;
+
+  public apiBase: string = "";
+  public http: HttpClient = null;
+
 
   constructor(private modalService: NgbModal, http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.apiBase = baseUrl;
@@ -34,6 +37,8 @@ export class TicketsComponent {
       console.log(this.tickets);
     }, error => console.error(error));
 
+    this.apiBase = baseUrl;
+    this.http = http;
   }
 
 
@@ -47,38 +52,29 @@ export class TicketsComponent {
   }
 
   //Adding a new ticket to the tickets database
+
+
   addTicket(form: NgForm) {
-    let title = form.form.value.title;
-    let description = form.form.value.descrption;
+    console.log(form.form.value.title)
+    let title = form.form.value.title; 
+
+    let description = form.form.value.description;
     let resolved = form.form.value.resolved;
     let solution = form.form.value.solution;
     let priority = form.form.value.priority;
-    this.http.post<Tickets>(this.apiBase + 'api/tickets?title=' + title, {}).subscribe(result => {
-<<<<<<< HEAD
+
+    let ticket: Tickets = { TicketId: 0, Title: title, Description: description, Resolved: resolved, Solution: solution, priority: priority }
+    this.http.post<Tickets>(this.apiBase + 'api/Tickets', ticket).subscribe(result => {
+
+
       console.log(result)
       let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priority: priority };
       this.tickets.push(ticket);
-=======
 
-     console.log(result)
-     let ticket: Tickets = { TicketId: undefined, Title: title, Description: description, Resolved: resolved, Solution: solution, Priotity: Priotity };
-     this.tickets.push(ticket);
->>>>>>> 1da25f55bf97003fa348ff3fd969a3e1b2ab8d4f
     });
   }
 
 
-
-  buttonSubmit(form: NgForm) {
-    this.addTicket(form);
-    this.displayTicket(this.http);
-  }
-
-
-  //resolveTicket(Ticket: boolean): void {
-  //  console.log(Ticket);
-  //  this.tickets.Resolved  = true;
-  //}
 
 
   open(content) {
