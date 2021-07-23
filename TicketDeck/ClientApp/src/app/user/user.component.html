@@ -3,11 +3,13 @@
   <!--heading for page-->
   <h2>Please select a user:</h2>
   <div class="row">
-    <form #selectUserForm="ngForm" (ngSubmit)="selectUser(selectUserForm)">
-      <select name="selectedUser" ngModel>
-        <option *ngFor="let u of users" value="{{u.name}}">{{u.name}}</option>
-      </select>
-      <input type="submit" value="view" />
+
+      <form #selectUserForm="ngForm" (ngSubmit)="selectUser(selectUserForm)">
+        <select  name="selectedUser" ngModel>
+            <option *ngFor="let u of users" value="{{u.name}}">{{u.name}}</option>
+        </select>
+      <input type="submit" value="view"/>
+
     </form>
   </div>
   <div class="row">
