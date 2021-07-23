@@ -58,6 +58,7 @@
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\app\bookmarks\bookmarks.component.spec.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\bookmarks\bookmarks.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\tickets-details\tickets-details.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

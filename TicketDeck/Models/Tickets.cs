@@ -22,5 +22,6 @@ namespace TicketDeck.Models
         public string Priotity { get; set; }
 
         public virtual ICollection<Bookmarks> Bookmarks { get; set; }
+
     }
 }

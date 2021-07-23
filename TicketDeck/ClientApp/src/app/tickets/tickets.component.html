@@ -1,29 +1,58 @@
-<div style="border: 1px solid red">Ticket Component</div>
-
-<h1>Tickets</h1>
-
-
-
-
-<button (click)="createTicket()" type="button">
-  Create New Ticket
-</button>
-
-<a class="btn" routerLink="/bookmarks">Bookmarks</a>
-
-<a class="btn1" routerLink="/user">Users</a>
 <div>
-  <form>
-    <label>Search A Ticket</label>
-    <input type="text" name="ticket" />
-    <br />
-    <input type="submit" value="Search Ticket" />
-  </form>
-</div>
+  <h1>Ticket Manager</h1>
+  <!--<a class="btn" routerLink="/bookmarks">Bookmarks</a>
+  <a class="btn1" routerLink="/user">Users</a>-->
+  <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Add A Ticket</button>
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Ticket</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #addTicketForm="ngForm" (ngSubmit)="addTicket(addTicketForm)">
+        <input ngModel type="text" id="ticket" name="title" placeholder="Title" />
+        <br />
+        <br />
+        <input ngModel type="text" id="ticket" name="description" placeholder="Description" />
+        <br />
+        <br />
+        <label class="switch">
+          <input ngModel type="checkbox" name="resolved">
+          <span class="slider">Resolved</span>
+        </label>
+        <br />
+        <br />
+        <input ngModel type="text" id="ticket" name="solution" placeholder="Solution" />
+        <br />
+        <br />
+
+        <div class="custom-select" style="width:200px;">
+          <select ngModel name="priority">
+            <option value="0">Select priority:</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <input type="submit" />
+      </form>
+
+
+    </div>
+
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add Ticket</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+
+    </div>
+  </ng-template>
+  </div>
 
 <div *ngFor="let t of tickets">
-  <p> Id:{{t.ticketId}} Title:{{t.title}}</p>
+  <a [routerLink]="['/ticket',t.ticketId]"> TicketID:{{t.ticketId}} Title:{{t.title}}</a>
 </div>
-
 
 

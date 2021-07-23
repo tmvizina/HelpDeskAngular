@@ -64,7 +64,7 @@ namespace TicketDeck.Models
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Priotity)
+                entity.Property(e => e.Priority)
                     .HasMaxLength(225)
                     .IsUnicode(false);
 
