@@ -1,31 +1,30 @@
-\
 <!--This is the main container of the page-->
 <div class="container" style="border: 1px solid black">
   <!--heading for page-->
   <h2>Please select a user:</h2>
   <div class="row">
-    <div class="col-6 col-sm-6 center" *ngFor="let u of users">
-      <p style="border: 1px solid red">{{u.name}}</p>
-    </div>
+    <form #selectUserForm="ngForm" (ngSubmit)="selectUser(selectUserForm)">
+      <select name="selectedUser" ngModel>
+        <option *ngFor="let u of users" value="{{u.name}}">{{u.name}}</option>
+      </select>
+      <input type="submit" value="view" />
+    </form>
   </div>
   <div class="row">
     <div class="col-6 center">
       <p style="border: 1px solid red">Second row?</p>
     </div>
   </div>
-\
-<div style="border: 1px solid red">User Component</div>
+</div>
 
 
-
-  <!--<button (click)="a">Click me</button>-->
-  <!-- Add a new user form-->
-  <div class="row">
-    <div class="col">
-      <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
-        <input type="text" name="name" ngModel />
-        <input type="submit" value="Add User" />
-      </form>
-    </div>
+<!--<button (click)="a">Click me</button>-->
+<!-- Add a new user form-->
+<div class="row">
+  <div class="col">
+    <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
+      <input type="text" name="name" ngModel />
+      <input type="submit" value="Add User" />
+    </form>
   </div>
-
+</div>
