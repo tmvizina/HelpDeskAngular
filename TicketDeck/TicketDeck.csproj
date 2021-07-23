@@ -44,6 +44,8 @@
     <None Remove="ClientApp\src\app\bookmarks\Bookmarks.ts" />
 
     <None Remove="ClientApp\src\app\help-desk.service.ts" />
+
+    <None Remove="ClientApp\src\app\login.service.ts" />
     <None Remove="ClientApp\src\app\tickets\Tickets.ts" />
   </ItemGroup>
 
@@ -56,6 +58,7 @@
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\app\bookmarks\bookmarks.component.spec.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\bookmarks\bookmarks.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\tickets-details\tickets-details.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
