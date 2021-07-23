@@ -20,7 +20,7 @@ namespace TicketDeck.Models
         public bool? Resolved { get; set; }
         public string Solution { get; set; }
         public string Priority { get; set; }
-       
+
         public virtual ICollection<Bookmarks> Bookmarks { get; set; }
     }
 }
