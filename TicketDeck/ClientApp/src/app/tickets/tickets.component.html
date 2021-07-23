@@ -1,7 +1,5 @@
 <div>
   <h1>Ticket Manager</h1>
-  <!--<a class="btn" routerLink="/bookmarks">Bookmarks</a>
-  <a class="btn1" routerLink="/user">Users</a>-->
   <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Add A Ticket</button>
   <ng-template #mymodal let-modal>
     <div class="modal-header">
@@ -14,7 +12,7 @@
       <form #addTicketForm="ngForm" (ngSubmit)="addTicket(addTicketForm)">
         <input ngModel type="text" id="ticket" name="title" placeholder="Title" />
         <br />
-        <br/>
+        <br />
         <input ngModel type="text" id="ticket" name="descrtiption" placeholder="Descrtiption" />
         <br />
         <br />
@@ -27,27 +25,29 @@
         <input ngModel type="text" id="ticket" name="solution" placeholder="Solution" />
         <br />
         <br />
+        <div class="custom-select" style="width:200px;">
+          <select ngModel name="Priority">
+            <option value="0">Select priority:</option>
+            <option value="1">High</option>
+            <option value="2">Medium</option>
+            <option value="3">Low</option>
+          </select>
+          </div>
+          <br />
+          <br />
+          <div class="modal-footer">
+            <input class="btn btn-outline-dark" type="submit" value="Add Ticket" />
+            <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('close click')">Cancel</button>
+          </div>
       </form>
     </div>
-    <div class="custom-select" style="width:200px;">
-      <select ngModel name="Priority">
-        <option value="0">Select priority:</option>
-        <option value="1">High</option>
-        <option value="2">Medium</option>
-        <option value="3">Low</option>
-      </select>
-    </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add Ticket</button>
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
-
     </div>
   </ng-template>
   </div>
 
+
 <div *ngFor="let t of tickets">
-  <p> TicketID:{{t.ticketId}} Title:{{t.title}}</p>
+
+  <ul> TicketID:{{t.ticketId}} Title:{{t.title}}</ul>
 </div>
-
-
-
