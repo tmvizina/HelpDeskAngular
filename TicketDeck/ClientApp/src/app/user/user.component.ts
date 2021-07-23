@@ -46,7 +46,7 @@ export class UserComponent {
     let name: string = form.form.value.name;
     this.http.post<User>(this.apiBase + 'api/users?name=' + name, {}).subscribe(result => {
       console.log(result)
-      let u: User = { name: name, userID: this.users.length };
+      let u: User = { name: name, userId: this.users.length };
       this.users.push(u);
 
     });
@@ -66,6 +66,22 @@ export class UserComponent {
       this.route.navigateByUrl('/tickets');
     }
   }
+
+  //DELETE user -- this function will delete a user from the DB
+  deleteUser(form: NgForm) {
+    let id = form.form.value.deleteUser;
+    this.http.delete<User>(this.apiBase + 'api/users/' + id, {}).subscribe(results => {
+      console.log(results)
+    });
+
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].userId == id) {
+        this.users.splice(id, 1);
+      }
+    }
+  }
+
+
 
 
   //constructor(private user: HelpDeskService, @Inject('BASE_URL') baseUrl: string) {
