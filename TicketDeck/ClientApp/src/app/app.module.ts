@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CommonModule } from '@angular/common';
 import { TicketsDetailsComponent } from './tickets-details/tickets-details.component';
+import { LoginService } from './login.service';
 
 /*Don't forgot to import the component into app.module so we can pass it on 1 of 3*/
 
@@ -53,7 +54,7 @@ import { TicketsDetailsComponent } from './tickets-details/tickets-details.compo
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
