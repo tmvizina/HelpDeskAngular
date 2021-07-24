@@ -7,4 +7,4 @@ var Tickets = /** @class */ (function () {
     return Tickets;
 }());
 exports.Tickets = Tickets;
-//# sourceMappingURL=Tickets.js.map
+//# sourceMappingURL=tickets.js.map

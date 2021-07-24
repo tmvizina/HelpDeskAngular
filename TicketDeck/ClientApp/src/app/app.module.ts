@@ -16,6 +16,9 @@ import { UserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { CommonModule } from '@angular/common';
+import { TicketsDetailsComponent } from './tickets-details/tickets-details.component';
+import { LoginService } from './login.service';
+
 /*Don't forgot to import the component into app.module so we can pass it on 1 of 3*/
 
 
@@ -29,7 +32,8 @@ import { CommonModule } from '@angular/common';
     FetchDataComponent,
     TicketsComponent,
     UserComponent,
-    BookmarksComponent
+    BookmarksComponent,
+    TicketsDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,17 +44,17 @@ import { CommonModule } from '@angular/common';
 
       /*The '' path is how we can change the starting location of our program
        Step 3 of 3 of connecting a new component is directly doing the path*/
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: UserComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    { path: 'tickets', component: TicketsComponent},
+      { path: 'tickets', component: TicketsComponent },
       { path: 'user', component: UserComponent },
       { path: 'bookmarks', component: BookmarksComponent },
-
+      { path: 'ticket/:Id' , component: TicketsDetailsComponent },
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

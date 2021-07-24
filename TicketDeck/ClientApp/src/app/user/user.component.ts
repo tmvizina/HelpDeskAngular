@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { HelpDeskService } from '../help-desk.service';
 import { User } from './User';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
     selector: 'app-user',
@@ -19,7 +21,8 @@ export class UserComponent {
   public apiBase: string = "";
   public http: HttpClient = null;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public route:Router ,  public LoginService: LoginService) {
     this.apiBase = baseUrl;
     this.http = http;
 
@@ -49,13 +52,35 @@ export class UserComponent {
     });
   }
 
+
+
   //will recall page and display updated user list
   buttonSubmit(form: NgForm) {
     this.addUser(form);
     this.displayUser(this.http);
   }
 
+  //this is select the user and route to a ticket page
+  //it is a router object and navigate by URL
+  selectUser(form: NgForm) {
+    if (form.form.value !== undefined) {
+      this.LoginService.login(form.form.value)
+      this.route.navigateByUrl('/tickets');
+    }
+  }
 
+  //DELETE user -- this function will delete a user from the DB
+  deleteUser(form: NgForm) {
+    let id = form.form.value.deleteUser;
+    this.http.delete<User>(this.apiBase + 'api/users/' + id, {}).subscribe(results => {
+      console.log(results)
+    });
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].userID === id) {
+        this.users.splice(id, 1);
+      }
+    }
+  }
   //constructor(private user: HelpDeskService, @Inject('BASE_URL') baseUrl: string) {
   //  this.user.getUser();
   //  console.log(this.user.getUser());

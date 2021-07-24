@@ -1,0 +1,32 @@
+
+<h1>Ticket Details</h1>
+<div *ngIf="ticket!==undefined">
+  <p>TicketId: {{ticket.ticketId}}</p>
+
+  <p>Title: {{ticket.title}}</p>
+
+  <p>Description: {{ticket.description}}</p>
+
+  <div *ngIf="ticket.resolved===false">
+    <form #addSolutionForm="ngForm" (ngSubmit)="addSolution(addSolutionForm,this.ticket)">
+      <p>Add Solution</p>
+      <input type="text" name="solution" ngModel />
+      <input type="submit" value="Add Solution" />
+    </form>
+
+  </div>
+
+
+  <div *ngIf="ticket.resolved===true">
+    <p>Resolved: {{ticket.resolved}}</p>
+  </div>
+
+  <p>Solution: {{ticket.solution}}</p>
+
+  <p>Priority: {{ticket.priority}}</p>
+</div>
+
+
+<div>
+  <button (click)="addBookmark()">Add Bookmark</button>
+</div>
