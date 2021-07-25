@@ -61,7 +61,7 @@ export class BookmarksComponent {
     let ticketIdf = form.form.value.ticketId;
     this.http.post<Bookmarks>(this.apiBase + 'api/bookmarks?PersonID' + personIdf, ticketIdf).subscribe(result => {
       console.log(result)
-      let b: Bookmarks = { PersonId: personIdf, TicketId: ticketIdf, BookmarksId: this.bookmarks.length };
+      let b: Bookmarks = { personId: personIdf, ticketId: ticketIdf, bookmarksId: this.bookmarks.length };
       this.bookmarks.push(b);
     });
   }

@@ -1,7 +1,7 @@
 export class Tickets {
-  TicketId: number;
-  Title: string;
-  Description: string;
+  ticketId: number;
+  title: string;
+  description: string;
   resolved: boolean;
   solution: string;
   priority: string; 

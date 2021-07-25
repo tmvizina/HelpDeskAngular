@@ -46,7 +46,7 @@ export class TicketsComponent {
 
     let solution = form.form.value.solution;
     let priority = form.form.value.priority;
-    let ticket: Tickets = { TicketId: 0, Title: title, Description: description, resolved: resolved, solution: solution, priority: priority }
+    let ticket: Tickets = { ticketId: 0, title: title, description: description, resolved: resolved, solution: solution, priority: priority }
     this.http.post<Tickets>(this.apiBase + 'api/Tickets', ticket).subscribe(result => {
       console.log(result)
 

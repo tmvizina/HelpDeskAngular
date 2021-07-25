@@ -22,7 +22,7 @@ export class LoginService {
 
   }
 
-  getLogin():number {
+  getLogin():string {
 
     return JSON.parse(localStorage.getItem('login'));
   }

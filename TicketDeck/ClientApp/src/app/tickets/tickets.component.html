@@ -1,5 +1,7 @@
 <div>
-  <h1>Ticket Manager</h1>
+  <br />
+  <br />
+  <h3 class="display-4">Ticket Manager</h3>
   <!--<a class="btn" routerLink="/bookmarks">Bookmarks</a>
   <a class="btn1" routerLink="/user">Users</a>-->
   <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Add A Ticket</button>
@@ -20,7 +22,7 @@
         <br />
         <label class="switch">
           <input ngModel type="checkbox" name="resolved">
-          <span class="slider">Resolved</span>
+          <span class="slider">  Resolved</span>
         </label>
         <br />
         <br />
@@ -28,9 +30,9 @@
         <br />
         <br />
 
-        <div class="custom-select" style="width:200px;">
-          <select ngModel name="priority">
-            <option value="0">Select priority:</option>
+        <div>
+          <select class="custom-select" style="width:200px;" ngModel name="priority">
+            <option selected value="0">Select priority:</option>
             <option value="high">High</option>
             <option value="medium">Medium</option>
             <option value="low">Low</option>
@@ -42,29 +44,48 @@
 
         <div class="modal-footer">
           <!--<input class="btn btn-outline-dark" type="submit" value="Add Ticket" />
-    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('close click')">Cancel</button>-->
+          <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('close click')">Cancel</button>-->
         </div>
-
 
         <input class="btn btn-outline-dark" type="submit" />
       </form>
-
 
     </div>
 
 
     <div class="modal-footer">
-      
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">OK</button>
 
     </div>
   </ng-template>
-  </div>
+</div>
+
+<br />
 
 <div *ngFor="let t of tickets">
-  <a [routerLink]="['/ticket',t.ticketId]"> TicketID:{{t.ticketId}} Title:{{t.title}}</a>        <button type="button" class="close" aria-label="Close" (click)="removeTicket(t.ticketId)">
-    <span aria-hidden="true">×</span>
-  </button>
-</div>
+  <div  *ngIf="(t.priority === 'high' && !t.resolved)">
+    <a [routerLink]="['/ticket',t.ticketId]" class="text-danger"><b> Ticket ID: </b>{{t.ticketId}}<br />{{t.title}}</a>        <button type="button" class="close" aria-label="Close" (click)="removeTicket(t.ticketId)">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div *ngIf="t.priority === 'medium'  && !t.resolved">
+    <a [routerLink]="['/ticket',t.ticketId]" class="text-warning"><b> Ticket ID: </b>{{t.ticketId}}<br />{{t.title}}</a>        <button type="button" class="close" aria-label="Close" (click)="removeTicket(t.ticketId)">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div  *ngIf="t.priority === 'low'  && !t.resolved">
+    <a [routerLink]="['/ticket',t.ticketId]" class="text-primary"><b> Ticket ID: </b>{{t.ticketId}}<br />{{t.title}}</a>        <button type="button" class="close" aria-label="Close" (click)="removeTicket(t.ticketId)">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div   *ngIf="t.resolved">
+    <a [routerLink]="['/ticket',t.ticketId]" class="text-success"><b> Ticket ID: </b>{{t.ticketId}}<br />{{t.title}}</a>        <button type="button" class="close" aria-label="Close" (click)="removeTicket(t.ticketId)">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+ </div>
+
+  <!--&& t.Resolved === 1-->
 
 

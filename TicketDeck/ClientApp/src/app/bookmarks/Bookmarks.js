@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Bookmarks = void 0;
-var Bookmarks = /** @class */ (function () {
-    function Bookmarks() {
+exports.bookmarks = void 0;
+var bookmarks = /** @class */ (function () {
+    function bookmarks() {
     }
-    return Bookmarks;
+    return bookmarks;
 }());
-exports.Bookmarks = Bookmarks;
+exports.bookmarks = bookmarks;
 //# sourceMappingURL=Bookmarks.js.map

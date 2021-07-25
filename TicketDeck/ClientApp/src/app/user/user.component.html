@@ -1,41 +1,31 @@
 <!--This is the main container of the page-->
 <div class="container center border">
   <!--heading for page-->
-  <h1 class="">Welcome</h1>
+  <h1 class="display-2">Welcome</h1>
   <!--Select a user and LOGIN-->
-  <div class="row">
-    <div class="col">
-      <h5>Please select a user:</h5>
-      <form #selectUserForm="ngForm" (ngSubmit)="selectUser(selectUserForm)">
-        <select name="selectedUser" ngModel>
-          <option *ngFor="let u of users" value="{{u.name}}">{{u.name}}</option>
-        </select>
-        <input type="submit" value="Login" />
-      </form>
-    </div>
-  </div>
+  <h5 class="text-muted lead">Please select a user:</h5>
+  <form #selectUserForm="ngForm" (ngSubmit)="selectUser(selectUserForm)">
+    <select name="selectedUser" ngModel>
+      <option *ngFor="let u of users" value="{{u.name}}">{{u.name}}</option>
+    </select>
+    <input class="mx-sm-3 my-sm-1 btn btn-outline-primary" type="submit" value="Login" />
+  </form>
   <br />
   <br />
+
   <!--This form will ADD a new user-->
-  <div class="container center border">
-    <div class="row">
-      <div class="col">
-        <h6>Add a new user:</h6>
-        <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
-          <input type="text" name="name" ngModel />
-          <input type="submit" value="Add User" />
-        </form>
-        <!-- this form will DELETE a user-->
-        <div class="col">
-          <h6>Delete a user:</h6>
-          <form #deleteUserForm="ngForm" (ngSubmit)="deleteUser(deleteUserForm)">
-            <select name="deleteUser" ngModel>
-              <option *ngFor="let u of users" value="{{u.userId}}">{{u.name}}</option>
-            </select>
-            <input type="submit" value="Delete User" />
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <span class="text-muted lead">Or add or Delete a user:</span>
+  <form #addUserForm="ngForm" (ngSubmit)="buttonSubmit(addUserForm)">
+    <input type="text" name="name" ngModel />
+    <input class="mx-sm-3 my-sm-1 btn btn-outline-primary"  type="submit" value="Add User" />
+  </form>
+  <br />
+<!-- this form will DELETE a user-->
+  <form #deleteUserForm="ngForm" (ngSubmit)="deleteUser(deleteUserForm)">
+    <select name="deleteUser" ngModel>
+      <option *ngFor="let u of users" value="{{u.userId}}">{{u.name}}</option>
+    </select>
+    <input class="mx-sm-3 my-sm-1 btn btn-outline-primary"  type="submit" value="Delete User" />
+  </form>
 </div>

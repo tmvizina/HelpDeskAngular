@@ -1,7 +1,5 @@
-export class Bookmarks {
-  BookmarksId: number;
-  PersonId: number;
-  TicketId: number;
- // Users: number;
-  //Tickets: number;
+export class bookmarks {
+  bookmarksId: number;
+  personId: number;
+  ticketId: number;
 }

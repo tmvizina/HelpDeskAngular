@@ -34,11 +34,12 @@ export class UserComponent {
   }
 
   //will call API and update the display
-  displayUser(http: HttpClient) {
+  public displayUser(http: HttpClient): User[]{
     http.get<User[]>(this.apiBase + 'api/users').subscribe(result => {
       this.users = result;
       console.log(this.users);
     }, error => console.error(error));
+    return this.users;
   }
 
   //put will create a new user and add it to the database
@@ -68,6 +69,8 @@ export class UserComponent {
       this.route.navigateByUrl('/tickets');
     }
   }
+
+
 
   //DELETE user -- this function will delete a user from the DB
   deleteUser(form: NgForm) {

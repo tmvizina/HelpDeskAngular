@@ -1,15 +1,16 @@
-
-<h1>Ticket Details</h1>
+<br />
+<h1 class="display-4">Ticket Details</h1>
+<br />
 <div *ngIf="ticket!==undefined">
-  <p>TicketId: {{ticket.ticketId}}</p>
+  <p><b>Ticket ID:   </b> {{ticket.ticketId}}</p>
 
-  <p>Title: {{ticket.title}}</p>
+  <p><b>Problem: </b> {{ticket.title}} </p>
 
-  <p>Description: {{ticket.description}}</p>
+  <p><b>Description:   {{ticket.Description}}</b></p>
 
   <div *ngIf="ticket.resolved===false">
     <form #addSolutionForm="ngForm" (ngSubmit)="addSolution(addSolutionForm,this.ticket)">
-      <p>Add Solution</p>
+      <p><b>Add Solution</b></p>
       <input type="text" name="solution" ngModel />
       <input type="submit" value="Add Solution" />
     </form>
@@ -18,15 +19,15 @@
 
 
   <div *ngIf="ticket.resolved===true">
-    <p>Resolved: {{ticket.resolved}}</p>
+    <p> <b>Resolved:  </b> {{ticket.resolved}}</p>
   </div>
 
-  <p>Solution: {{ticket.solution}}</p>
+  <p> <b>Solution:  </b> {{ticket.solution}}</p>
 
-  <p>Priority: {{ticket.priority}}</p>
+  <p><b>Priority:   </b> {{ticket.priority}}</p>
 </div>
 
 
 <div>
-  <button (click)="addBookmark()">Add Bookmark</button>
+  <button class="btn btn-lg btn-outline-primary" (click)="addBookmark()">Add Bookmark</button>
 </div>

@@ -1,7 +1,6 @@
+
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">TicketDeck</a>
       <button class="navbar-toggler"
@@ -16,16 +15,17 @@
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
            [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
+          <div>
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <div *ngIf="LoginService.getLogin()===undefined || LoginService.getLogin()===null">
-<li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/user']">Login</a>
           </li>
-          </div>
+      </div>
       <div *ngIf="LoginService.getLogin()!==undefined && LoginService.getLogin()!==null">
         <li class="nav-item" [routerLinkActive]="['link-active']">
           <a class="nav-link text-dark" [routerLink]="['/tickets']">Tickets</a>
@@ -41,6 +41,7 @@
 
 
       </div>
+    </div>
       </ul>
     </div>
     </div>
