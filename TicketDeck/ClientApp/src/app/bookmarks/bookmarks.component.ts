@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Bookmarks } from './Bookmarks';
+import { bookmarks } from './Bookmarks';
 import { HelpDeskService } from '../help-desk.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -15,16 +15,18 @@ import {Tickets} from "../tickets/Tickets"
   providers: [HttpClient]
 })
 export class BookmarksComponent {
-  public bookmarks: Bookmarks[] = [];
+  public bookmarks: bookmarks[] = [];
   public tickets: Tickets[] = [];
   public ticketslist: Tickets[]=[];
   public postBookmark: HttpClient = null;
   public apiBase: string = "";
   public http: HttpClient = null;
+
+
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, public route: Router, LoginService:LoginService) {
     this.apiBase = baseUrl;
     this.http = http;
-    http.get<Bookmarks[]>(this.apiBase + 'api/bookmarks').subscribe(result => {
+    http.get<bookmarks[]>(this.apiBase + 'api/bookmarks').subscribe(result => {
       this.bookmarks = result;
       console.log(this.bookmarks);
     }, error => console.error(error));
@@ -59,9 +61,9 @@ export class BookmarksComponent {
   addBookmark(form: NgForm) {
     let personIdf = form.form.value.personId;
     let ticketIdf = form.form.value.ticketId;
-    this.http.post<Bookmarks>(this.apiBase + 'api/bookmarks?PersonID' + personIdf, ticketIdf).subscribe(result => {
+    this.http.post<bookmarks>(this.apiBase + 'api/bookmarks?PersonID' + personIdf, ticketIdf).subscribe(result => {
       console.log(result)
-      let b: Bookmarks = { personId: personIdf, ticketId: ticketIdf, bookmarksId: this.bookmarks.length };
+      let b: bookmarks = { personId: personIdf, ticketId: ticketIdf, bookmarksId: this.bookmarks.length };
       this.bookmarks.push(b);
     });
   }

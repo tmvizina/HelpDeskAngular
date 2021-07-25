@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tickets } from './tickets/tickets';
 import { User } from './user/user';
-import { Bookmarks } from './bookmarks/bookmarks';
+import { bookmarks } from './bookmarks/bookmarks';
 
 
 
@@ -22,7 +22,7 @@ export class LoginService {
 
   }
 
-  getLogin():string {
+  getLogin():object {
 
     return JSON.parse(localStorage.getItem('login'));
   }

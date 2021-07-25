@@ -7,12 +7,13 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {bookmarks} from '../bookmarks/Bookmarks'
 import { LoginService } from '../login.service';
-import { User } from '../user/user';
+import { User } from '../User/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tickets-details',
   templateUrl: './tickets-details.component.html',
-  providers: [HttpClient]
+  providers: [HelpDeskService, HttpClient]
 })
 /** Tickets component*/
 export class TicketsDetailsComponent {
@@ -22,14 +23,21 @@ export class TicketsDetailsComponent {
   public ticket: Tickets;
   closeResult: string;
   public apiBase: string = "";
-  public http: HttpClient;
   public bookmarks: bookmarks[];
   public bookmark: bookmarks;
   public users: User[] = [];
   public user: User;
+ 
 
-  constructor(private modalService: NgbModal, http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route:ActivatedRoute, public LoginService:LoginService) {
+  constructor(private modalService: NgbModal, private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, public LoginService: LoginService, public HelpDeskService: HelpDeskService) {
     console.log(route.snapshot.params.Id);
+   
+    http.get<User[]>(baseUrl + 'api/users').subscribe(result => {
+      this.users = result;
+      console.log("constructor" + this.users);
+    }, error => console.error(error));
+
+    console.log(this.users);
     http.get<Tickets>(baseUrl + 'api/tickets/' + route.snapshot.params.Id).subscribe(result => {
       this.ticket = result;
       console.log(this.ticket);
@@ -44,35 +52,39 @@ export class TicketsDetailsComponent {
     return ticket;
   }
 
-  public displayUser(http: HttpClient): User[] {
-    http.get<User[]>(this.apiBase + 'api/users').subscribe(result => {
-      this.users = result;
-      console.log(this.users);
-    }, error => console.error(error));
-    return this.users;
-  }
+  //public displayUser(http: HttpClient): User[] {
+  //  http.get<User[]>(this.apiBase + 'api/users').subscribe(result => {
+  //    this.users = result;
+  //    console.log(this.users);
+  //  }, error => console.error(error));
+  //  return this.users;
+  //}
+
 
 
   addBookmark() {
     console.log(this.ticket)
-    let activeuser = this.LoginService.getLogin();
+    let activeuser:Object = this.LoginService.getLogin();
     console.log(activeuser);
-    this.users = this.displayUser(this.http);
-    console.log(this.users)
-    this.users.forEach(user => {
-      if (user.name === activeuser) {
-        this.user = user;
-      }
-      if (this.user = undefined) {
-        user = { userID: 6, name: "Hello" }
+    console.log(this.users);
+    let values: string[]= Object.keys(activeuser).map(key => activeuser[key]);
+    console.log(values);
+    this.users.forEach(item => {
+      console.log(item)
+      if (item.name.includes(values[0])) {
+        this.user = item;
+        console.log("FOUND IT" + this.user);
       }
     });
-    this.bookmark = { bookmarksId: 0, personId: this.user.userID, ticketId: this.ticket.ticketId };
+    let userValues: string[] = Object.keys(this.user).map(key => this.user[key]);
+    console.log(userValues[1])
+    let num: number = parseInt(userValues[0]);
+    console.log(num);
+    console.log(num);
+    this.bookmark = { bookmarksId: 0, personId:num, ticketId: this.ticket.ticketId };
 
     this.http.post<bookmarks>(this.apiBase + 'api/Bookmarks', this.bookmark).subscribe(result => {
-        console.log(result)
-
-    this.bookmarks.push(this.bookmark);
+      console.log(result);
     });
   }
 
