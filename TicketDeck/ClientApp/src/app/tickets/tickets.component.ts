@@ -35,12 +35,12 @@ export class TicketsComponent {
 
   addTicket(form: NgForm) {
     console.log(form.form.value.title)
-    let title = form.form.value.title; 
+    let title = form.form.value.title;
 
     let description = form.form.value.description;
     let resolved = form.form.value.resolved;
 
-    if(resolved === ""){
+    if (resolved === "") {
       resolved = false;
     }
 
@@ -63,10 +63,13 @@ export class TicketsComponent {
     });
   }
 
+  exit() {
+    location.reload();
+  }
 
   open(content) {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
 
       this.closeResult = `Closed with: ${result}`;
 
@@ -89,8 +92,7 @@ export class TicketsComponent {
       return 'by clicking on a backdrop';
 
     }
-        else
-    {
+    else {
 
 
       return `with: ${reason}`;
