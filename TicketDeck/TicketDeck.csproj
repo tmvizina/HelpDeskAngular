@@ -47,22 +47,19 @@
 
     <None Remove="ClientApp\src\app\login.service.ts" />
     <None Remove="ClientApp\src\app\tickets\Tickets.ts" />
+    <None Remove="ClientApp\src\app\user.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\help-desk.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\tickets\Tickets.ts" />
-    <None Remove="ClientApp\src\app\user\User.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\app\bookmarks\bookmarks.component.spec.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\bookmarks\bookmarks.component.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\tickets-details\tickets-details.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\user\User.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\user\User.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
